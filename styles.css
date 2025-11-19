@@ -1,21 +1,41 @@
 /* ===== CSS Variables ===== */
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --accent-color: #ec4899;
-    --dark-bg: #0f172a;
-    --light-bg: #1e293b;
-    --card-bg: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    --gradient-2: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Dark theme - GitHub inspired with golden accent */
+    --primary-color: #e2b714;
+    --secondary-color: #f0c929;
+    --accent-color: #e2b714;
+    --dark-bg: #0d1117;
+    --light-bg: #161b22;
+    --card-bg: #161b22;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --success-color: #3fb950;
+    --warning-color: #d29922;
+    --gradient-1: linear-gradient(135deg, #e2b714 0%, #f0c929 100%);
+    --gradient-2: linear-gradient(135deg, #f0c929 0%, #e2b714 100%);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --primary-color: #d4a017;
+    --secondary-color: #e2b714;
+    --accent-color: #d4a017;
+    --dark-bg: #ffffff;
+    --light-bg: #f6f8fa;
+    --card-bg: #ffffff;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --success-color: #1a7f37;
+    --warning-color: #9a6700;
+    --gradient-1: linear-gradient(135deg, #d4a017 0%, #e2b714 100%);
+    --gradient-2: linear-gradient(135deg, #e2b714 0%, #d4a017 100%);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 }
 
 /* ===== Global Styles ===== */
@@ -99,12 +119,18 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(13, 17, 23, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
     transition: var(--transition);
     box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid rgba(226, 183, 20, 0.1);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.2);
 }
 
 .navbar.scrolled {
@@ -1064,6 +1090,65 @@ section {
 
 [data-aos="fade-left"].aos-animate {
     transform: translateX(0);
+}
+
+/* ===== Theme Toggle Button ===== */
+.theme-toggle {
+    position: fixed;
+    top: 100px;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 998;
+    box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-toggle i {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+/* ===== Light Mode Additional Styles ===== */
+[data-theme="light"] .circle {
+    opacity: 0.05;
+}
+
+[data-theme="light"] .skill-category,
+[data-theme="light"] .project-card,
+[data-theme="light"] .contact-item,
+[data-theme="light"] .timeline-content,
+[data-theme="light"] .stat-item,
+[data-theme="light"] .contact-form-wrapper {
+    border: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background: var(--light-bg);
+    border-color: rgba(212, 160, 23, 0.2);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .footer {
+    border-top-color: rgba(212, 160, 23, 0.2);
+}
+
+[data-theme="light"] .footer-social a {
+    background: var(--light-bg);
+    border: 1px solid rgba(212, 160, 23, 0.2);
 }
 
 /* ===== Responsive Design ===== */
